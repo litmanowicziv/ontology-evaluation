@@ -1,6 +1,6 @@
 import re
 
-from rdflib import Graph, Literal, URIRef, RDFS, SKOS
+from rdflib import Graph, Literal, URIRef, RDFS, RDF, OWL, SKOS
 from rdflib.query import Result
 
 from ..structs import Concept, Relation
@@ -41,6 +41,7 @@ def _define_concept(graph: Graph, concept: Concept):
 
     this = URIRef(identifier)
     graph.add((this, RDFS.label, label))
+    graph.add((this, RDF.type, OWL.Class))
 
     return this
 
